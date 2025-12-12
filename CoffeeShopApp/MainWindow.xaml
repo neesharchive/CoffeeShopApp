@@ -1,0 +1,228 @@
+﻿<Window x:Class="CoffeeShopApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Coffee Shop" Height="560" Width="420"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- TOP HEADER BAR -->
+        <Border Grid.Row="0" Style="{StaticResource CardPanel}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <TextBlock x:Name="TitleText"
+                               Text="Select Your Drink"
+                               FontSize="22"
+                               FontWeight="Bold"/>
+                    <TextBlock x:Name="SubtitleText"
+                               Text="Build a drink, add options, then brew it."
+                               Margin="0,4,0,0"
+                               Opacity="0.75"/>
+                </StackPanel>
+
+                <Border Grid.Column="1"
+                        Background="#11000000"
+                        CornerRadius="10"
+                        Padding="10,6"
+                        VerticalAlignment="Top">
+                    <TextBlock Text="SWENG 421"
+                               FontWeight="SemiBold"
+                               Opacity="0.85"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- MAIN CONTENT AREA -->
+        <Grid Grid.Row="1" Margin="0,12,0,0">
+
+            <!-- Screen 1: Drink selection -->
+            <Border x:Name="SelectDrinkCard" Style="{StaticResource CardPanel}">
+                <StackPanel x:Name="SelectDrinkPanel">
+                    <TextBlock Text="Choose a base drink"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,10"/>
+
+                    <Border Background="#0A000000" CornerRadius="12" Padding="10" Margin="0,0,0,10">
+                        <StackPanel>
+                            <RadioButton x:Name="LatteRadio" Content="Latte — espresso + steamed milk + foam"
+                                         IsChecked="True" Margin="0,0,0,6"/>
+                            <RadioButton x:Name="AmericanoRadio" Content="Americano — espresso + hot water"
+                                         Margin="0,0,0,6"/>
+                            <RadioButton x:Name="BrewedRadio" Content="Brewed Coffee — drip style"
+                                         Margin="0,0,0,0"/>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="Select size"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Margin="0,6,0,8"/>
+
+                    <Border Background="#0A000000" CornerRadius="12" Padding="10">
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton x:Name="SmallRadio" Content="Small"
+                                         IsChecked="True" Margin="0,0,18,0"/>
+                            <RadioButton x:Name="LargeRadio" Content="Large (+$0.75)"/>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="Tip: Add-ons are applied in the next step (Decorator pattern)."
+                               Margin="0,12,0,0"
+                               Opacity="0.7"
+                               FontSize="12"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Screen 2: Customization -->
+            <Border x:Name="CustomizeCard" Style="{StaticResource CardPanel}" Visibility="Collapsed">
+                <StackPanel x:Name="CustomizePanel">
+                    <TextBlock Text="Customize your drink"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,10"/>
+
+                    <Border Background="#0A000000" CornerRadius="12" Padding="10" Margin="0,0,0,10">
+                        <StackPanel>
+                            <CheckBox x:Name="ExtraShotCheck" Content="Extra Espresso Shot (+$1.00)"
+                                      Margin="0,0,0,6"/>
+                            <CheckBox x:Name="SyrupCheck" Content="Syrup (+$0.75)"
+                                      Margin="0,0,0,6"/>
+                            <CheckBox x:Name="WhippedCheck" Content="Whipped Cream (+$0.50)"
+                                      Margin="0,0,0,0"/>
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Text="These options wrap your base drink without changing the original class."
+                               Opacity="0.7" FontSize="12"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Screen 3: Summary -->
+            <Border x:Name="SummaryCard" Style="{StaticResource CardPanel}" Visibility="Collapsed">
+                <StackPanel x:Name="SummaryPanel">
+                    <TextBlock Text="Order summary"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,10"/>
+
+                    <Border Background="#0A000000" CornerRadius="12" Padding="12" Margin="0,0,0,10">
+                        <StackPanel>
+                            <TextBlock x:Name="SummaryDrinkText"
+                                       FontSize="16"
+                                       FontWeight="Bold"
+                                       Margin="0,0,0,6"/>
+                            <TextBlock Text="Ingredients + Add-ons:"
+                                       FontWeight="SemiBold"
+                                       Opacity="0.8"
+                                       Margin="0,4,0,4"/>
+                            <TextBlock x:Name="SummaryDescriptionText"
+                                       TextWrapping="Wrap"
+                                       Opacity="0.9"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="#0A000000" CornerRadius="12" Padding="12">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Total"
+                                       FontSize="14"
+                                       FontWeight="SemiBold"/>
+                            <TextBlock x:Name="SummaryPriceText"
+                                       Grid.Column="1"
+                                       FontSize="14"
+                                       FontWeight="Bold"/>
+                        </Grid>
+                    </Border>
+
+                    <TextBlock Text="Press Brew to schedule the task (Scheduler pattern) and start brewing."
+                               Margin="0,12,0,0"
+                               Opacity="0.7"
+                               FontSize="12"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Screen 4: Brewing -->
+            <Border x:Name="BrewingCard" Style="{StaticResource CardPanel}" Visibility="Collapsed">
+                <StackPanel x:Name="BrewingPanel">
+                    <TextBlock Text="Brewing status"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,10"/>
+
+                    <Border Background="#0A000000" CornerRadius="12" Padding="12" Margin="0,0,0,10">
+                        <StackPanel>
+                            <TextBlock x:Name="BrewingStatusText"
+                                       Text="Status: CREATED"
+                                       FontWeight="Bold"
+                                       Margin="0,0,0,8"/>
+                            <ProgressBar x:Name="BrewingProgress"
+                                         Height="18"
+                                         Minimum="0" Maximum="100"/>
+                            <TextBlock Text="Observer updates will appear below as the drink changes status."
+                                       Margin="0,10,0,0"
+                                       Opacity="0.7"
+                                       FontSize="12"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="#0A000000" CornerRadius="12" Padding="12">
+                        <StackPanel>
+                            <TextBlock Text="Event Log"
+                                       FontWeight="SemiBold"
+                                       Margin="0,0,0,6"/>
+                            <ScrollViewer Height="140" VerticalScrollBarVisibility="Auto">
+                                <TextBlock x:Name="BrewingLogText"
+                                           TextWrapping="Wrap"/>
+                            </ScrollViewer>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+
+        </Grid>
+
+        <!-- NAVIGATION / FOOTER -->
+        <Border Grid.Row="2" Style="{StaticResource CardPanel}" Margin="0,12,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock x:Name="FooterHintText"
+                           VerticalAlignment="Center"
+                           Opacity="0.7"
+                           FontSize="12"
+                           Text="Select → Customize → Summary → Brew"/>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="BackButton"
+                            Content="Back"
+                            Width="90"
+                            Click="BackButton_Click"/>
+
+                    <Button x:Name="NextButton"
+                            Style="{StaticResource PrimaryButton}"
+                            Content="Next"
+                            Width="90"
+                            Click="NextButton_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>
